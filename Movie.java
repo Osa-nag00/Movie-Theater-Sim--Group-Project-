@@ -11,6 +11,7 @@ public class Movie{
         this.seats = new seatSelection();
     }
 
+
     public String getName() {
         return this.name;
     }
