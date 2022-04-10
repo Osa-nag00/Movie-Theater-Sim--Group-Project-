@@ -4,14 +4,15 @@ import java.util.Arrays;
 // class that stores current seat for
 // any given movie in a matrix of 36 slots
 
-public class seatSelection {
+public class seatSelection 
+{
 
     private final int row = 6;
     private  final int col = 6;
     private int numSeatsTaken = 0;
     private int[][] seatsMatrix = new int[row][col];
 
-    // construct a new seat matrix
+    // constructs a new seat matrix
     // and fills matrix with zeros
     seatSelection()
     {
@@ -21,6 +22,12 @@ public class seatSelection {
             Arrays.fill(seatsMatrix[i],0);
         }
     }
+
+
+    // both take and remove seat functions return 1 if they can successfully
+    // take and open seat or remove a used seat respectively
+    // return -1 if that task can't be completed
+    // -2 if exception was caught
 
     public void takeSeat(javax.swing.JToggleButton toggleButton)
     {
@@ -86,7 +93,6 @@ public class seatSelection {
             seatsMatrix[rowID][colID] = 0;
             return;
         }
-        
         return;
     }
 
@@ -120,29 +126,12 @@ public class seatSelection {
         }
 
         return 1;
-         
-        
+          
     }
 
     public int getNumSeatsTaken()
     {
         return this.numSeatsTaken;
-    }
-
-
-    public void printSeats()
-    {
-        int i, j;
-
-        for (i = 0; i < row; i++)
-        {
-            for (j = 0; j < col; j++)
-            {
-                System.out.print(seatsMatrix[i][j]);
-            }
-
-            System.out.println();
-        }
     }
 
 }

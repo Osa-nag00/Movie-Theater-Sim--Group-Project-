@@ -10,9 +10,13 @@ public class MovieGUI extends javax.swing.JFrame {
     movieSelection ms;
     int selectedMovieIndex;
     double total;
+    double popCornSubTotal;
+    double drinkSubTotal;
     Movie currentMovie;
     NumberFormat formatter; 
     JToggleButton[] toggleButtons;
+    double[] popCornCost = {0.00, 6.09, 7.10, 8.10};
+    double[] drinkCost = {0.00, 5.09, 5.59, 6.09};
 
 
     public MovieGUI() {
@@ -92,13 +96,16 @@ public class MovieGUI extends javax.swing.JFrame {
                                          F1,F2,F3,F4,F5,F6};
 
         
+                                       
 
+        
         fakeScreen = new javax.swing.JLabel();
         movieScreenText = new javax.swing.JLabel();
         drinkPic = new javax.swing.JLabel();
         popPIc = new javax.swing.JLabel();
-        smallPop1 = new javax.swing.JRadioButton();
+        smallPop = new javax.swing.JRadioButton();
         noDrink = new javax.swing.JRadioButton();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -131,6 +138,9 @@ public class MovieGUI extends javax.swing.JFrame {
                 {
                     toggleButtons[i].setSelected(false);
                 }
+                noPop.setSelected(true);
+                noDrink.setSelected(true);
+
 
                 // sets the text for the per seat cost depending on the movie selected
                 perSeatCost.setText(ms.getSeatPriceString(selectedMovieIndex));
@@ -152,26 +162,120 @@ public class MovieGUI extends javax.swing.JFrame {
         popCornSizes.add(noPop);
         noPop.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         noPop.setText("None");
+        noPop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (noPop.isSelected() == true)
+                {   
+                    total -= popCornSubTotal;
+                    popCornSubTotal = popCornCost[0];
+                    updateTotal(popCornSubTotal);
+                }
+            }
+        });
+        
 
         popCornSizes.add(medPop);
         medPop.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         medPop.setText("Medium");
+        medPop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (medPop.isSelected() == true)
+                {   
+                    total -= popCornSubTotal;
+                    popCornSubTotal = popCornCost[2];
+                    updateTotal(popCornSubTotal);
+                }
+            }
+        });
 
         popCornSizes.add(largePop);
         largePop.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         largePop.setText("Large");
+        largePop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (largePop.isSelected() == true)
+                {   
+                    total -= popCornSubTotal;
+                    popCornSubTotal = popCornCost[3];
+                    updateTotal(popCornSubTotal);
+
+                }
+            }
+        });
+        
 
         drinkSizes.add(smallDrink);
         smallDrink.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         smallDrink.setText("Small");
+        smallDrink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (smallDrink.isSelected() == true)
+                {   
+                    total -= drinkSubTotal;
+                    drinkSubTotal = drinkCost[1];
+                    updateTotal(drinkSubTotal);
+                }
+            }
+        });
+        
 
         drinkSizes.add(medDrink);
         medDrink.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         medDrink.setText("Medium");
+        medDrink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (medDrink.isSelected() == true)
+                {   
+                    total -= drinkSubTotal;
+                    drinkSubTotal = drinkCost[2];
+                    updateTotal(drinkSubTotal);
+                }
+            }
+        });
 
         drinkSizes.add(largeDrink);
         largeDrink.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         largeDrink.setText("Large");
+        largeDrink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (largeDrink.isSelected() == true)
+                {   
+                    total -= drinkSubTotal;
+                    drinkSubTotal = drinkCost[3];
+                    updateTotal(drinkSubTotal);
+                }
+            }
+        });
+
+        popCornSizes.add(smallPop);
+        smallPop.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        smallPop.setText("Small");
+        smallPop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (smallPop.isSelected() == true)
+                {   
+                    total -= popCornSubTotal;
+                    popCornSubTotal = popCornCost[1];
+                    updateTotal(popCornSubTotal);
+                }
+            }
+        });
+        
+
+        drinkSizes.add(noDrink);
+        noDrink.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        noDrink.setText("None");
+        noDrink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (noDrink.isSelected() == true)
+                {   
+                    total -= drinkSubTotal;
+                    drinkSubTotal = drinkCost[0];
+                    updateTotal(drinkSubTotal);
+                }
+            }
+        });
+        
 
         perSeatCost.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         perSeatCost.setText("$0.00");
@@ -431,7 +535,7 @@ public class MovieGUI extends javax.swing.JFrame {
             }
         });
 
-        fakeScreen.setText("_______________________________________________________________________________");
+        fakeScreen.setText("_____________________________________________________________________________________");
 
         movieScreenText.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         movieScreenText.setText("Movie Screen");
@@ -444,13 +548,7 @@ public class MovieGUI extends javax.swing.JFrame {
         popPIc.setText("jLabel1");
         popPIc.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        popCornSizes.add(smallPop1);
-        smallPop1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        smallPop1.setText("Small");
-
-        drinkSizes.add(noDrink);
-        noDrink.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        noDrink.setText("None");
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -480,7 +578,7 @@ public class MovieGUI extends javax.swing.JFrame {
                                             .addGap(54, 54, 54))
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(smallPop1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(smallPop, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(noPop, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(medPop, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -641,7 +739,7 @@ public class MovieGUI extends javax.swing.JFrame {
                             .addComponent(noDrink))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(smallPop1)
+                            .addComponent(smallPop)
                             .addComponent(smallDrink))
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -684,18 +782,17 @@ public class MovieGUI extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    
-
+    // breaks if i delete, so this stays :|
     private void movieSelectionComboBoxActionPerformed(java.awt.event.ActionEvent evt) 
     {
         
     }
 
-    public void updateTotal(double seatPrice)
+    public void updateTotal(double updatedPrice)
     {
-        total = seatPrice;
+        total += updatedPrice;
         formatter = NumberFormat.getCurrencyInstance();
         totalCostIntText.setText(formatter.format(total));
     }
@@ -704,27 +801,37 @@ public class MovieGUI extends javax.swing.JFrame {
     public void checkToggleButtonStatus(JToggleButton[] toggleButtons)
     {   
         int i;
+        double amountPerSeat = 0;
         for (i = 0; i < 36; i++)
         {   
-            // if button is active and seat not already taken
-            // then take seat
-            if (toggleButtons[i].isSelected() == true &&
-                currentMovie.seatTaken(toggleButtons[i]) == 1)
-            {
-                currentMovie.takeSeat(toggleButtons[i]);
-            }
 
-            // if button becomes inactive, and seat is taken
-            // remove seat
-            if (toggleButtons[i].isSelected() == false &&
-                currentMovie.seatTaken(toggleButtons[i]) == -1)
-            {
-                currentMovie.removeSeat(toggleButtons[i]);
+            // if a movie has not been selected yet then simply return
+            try {
+                // if button is active and seat not already taken
+                // then take seat
+                if (toggleButtons[i].isSelected() == true &&
+                    currentMovie.seatTaken(toggleButtons[i]) == 1)
+                {
+                    currentMovie.takeSeat(toggleButtons[i]);
+                    amountPerSeat = currentMovie.getTicketPrice();
+                }
+
+                // if button becomes inactive, and seat is taken
+                // remove seat
+                if (toggleButtons[i].isSelected() == false &&
+                    currentMovie.seatTaken(toggleButtons[i]) == -1)
+                {   
+                    total -= currentMovie.getTicketPrice();
+                    currentMovie.removeSeat(toggleButtons[i]);
+                }
+
+            } catch (Exception e) {
+                return;
             }
         }
 
         // update the total when seat selection has been changed
-        updateTotal(currentMovie.getTicketPrice() * currentMovie.getSeats().getNumSeatsTaken());
+        updateTotal(amountPerSeat);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -781,7 +888,7 @@ public class MovieGUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup popCornSizes;
     private javax.swing.JLabel popPIc;
     private javax.swing.JRadioButton smallDrink;
-    private javax.swing.JRadioButton smallPop1;
+    private javax.swing.JRadioButton smallPop;
     private javax.swing.JLabel textLabelForSeatCost;
     private javax.swing.JLabel totalCostIntText;
     private javax.swing.JLabel totalLabel;

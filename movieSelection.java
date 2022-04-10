@@ -9,10 +9,10 @@ public class movieSelection {
     // and holds them in an array
     movieSelection()
     {
-        movieSelection[0] = new Movie("PeePeeJones", 6.00);
-        movieSelection[1] = new Movie("PeeJones", 8.00);
-        movieSelection[2] = new Movie("EJones", 4.00);
-        movieSelection[3] = new Movie("Jones", 5.50);
+        movieSelection[0] = new Movie("Minecraft 2", 13.64);
+        movieSelection[1] = new Movie("Big Man 3D!", 14.60);
+        movieSelection[2] = new Movie("Endiana Joe", 13.69);
+        movieSelection[3] = new Movie("The L-Squad", 11.65);
     }
 
     public Movie getMovie(int movieNum) 
@@ -31,6 +31,7 @@ public class movieSelection {
 
     public String getSeatPriceString(int movieIndex)
     {   
+        // object that helps with formatting numbers
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         Movie m = getMovie(movieIndex);
 
@@ -43,7 +44,6 @@ public class movieSelection {
         Movie m = getMovie(movieIndex);
         return (m == null) ? 0.00 : m.getTicketPrice();
     }
-
 
     public int getNumMovies()
     {
