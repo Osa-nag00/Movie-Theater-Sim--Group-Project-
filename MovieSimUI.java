@@ -19,19 +19,29 @@ public class MovieSimUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popCornSizes = new javax.swing.ButtonGroup();
+        drinkSizes = new javax.swing.ButtonGroup();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         seatSelectionButton = new javax.swing.JButton();
         totalLabel = new javax.swing.JLabel();
         totalCostIntText = new javax.swing.JLabel();
         completePurchase = new javax.swing.JButton();
+        smallPop = new javax.swing.JRadioButton();
+        medPop = new javax.swing.JRadioButton();
+        largePop = new javax.swing.JRadioButton();
+        smallDrink = new javax.swing.JRadioButton();
+        medDrink = new javax.swing.JRadioButton();
+        largeDrink = new javax.swing.JRadioButton();
+        drinkPic = new javax.swing.JLabel();
+        popPic1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Movie Theater Simulator");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setSize(new java.awt.Dimension(450, 500));
-        setResizable(false);
 
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.setToolTipText("");
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -40,7 +50,7 @@ public class MovieSimUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Movie Selection:");
 
@@ -55,9 +65,31 @@ public class MovieSimUI extends javax.swing.JFrame {
         totalLabel.setText("Total:");
 
         totalCostIntText.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
-        totalCostIntText.setText("jLabel2");
+        totalCostIntText.setText("$0.00");
 
         completePurchase.setText("Complete Purchase");
+
+        popCornSizes.add(smallPop);
+        smallPop.setText("Small");
+
+        popCornSizes.add(medPop);
+        medPop.setText("Medium");
+
+        popCornSizes.add(largePop);
+        largePop.setText("Large");
+
+        drinkSizes.add(smallDrink);
+        smallDrink.setText("Small");
+
+        drinkSizes.add(medDrink);
+        medDrink.setText("Medium");
+
+        drinkSizes.add(largeDrink);
+        largeDrink.setText("Large");
+
+        drinkPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/moviegui/drinkPic.jpg"))); // NOI18N
+
+        popPic1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/moviegui/popPic.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,9 +107,25 @@ public class MovieSimUI extends javax.swing.JFrame {
                         .addComponent(totalCostIntText)))
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(completePurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(seatSelectionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(popPic1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(218, 218, 218))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(completePurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(seatSelectionButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(medPop, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(smallPop, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(largePop, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(largeDrink)
+                                    .addComponent(smallDrink)
+                                    .addComponent(medDrink, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(drinkPic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,16 +136,37 @@ public class MovieSimUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(seatSelectionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(155, 155, 155)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(totalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(totalCostIntText))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(totalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(totalCostIntText))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(popPic1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(drinkPic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(smallDrink)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(medDrink)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(largeDrink))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(smallPop)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(medPop)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(largePop)))
+                        .addGap(62, 62, 62)))
                 .addComponent(completePurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
         );
-
-        seatSelectionButton.getAccessibleContext().setAccessibleName("Seat Selection Menu");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -116,6 +185,11 @@ public class MovieSimUI extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
         try {
             UIManager.setLookAndFeel(
             UIManager.getSystemLookAndFeelClassName());
@@ -137,9 +211,19 @@ public class MovieSimUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton completePurchase;
+    private javax.swing.JLabel drinkPic;
+    private javax.swing.ButtonGroup drinkSizes;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JRadioButton largeDrink;
+    private javax.swing.JRadioButton largePop;
+    private javax.swing.JRadioButton medDrink;
+    private javax.swing.JRadioButton medPop;
+    private javax.swing.ButtonGroup popCornSizes;
+    private javax.swing.JLabel popPic1;
     private javax.swing.JButton seatSelectionButton;
+    private javax.swing.JRadioButton smallDrink;
+    private javax.swing.JRadioButton smallPop;
     private javax.swing.JLabel totalCostIntText;
     private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
