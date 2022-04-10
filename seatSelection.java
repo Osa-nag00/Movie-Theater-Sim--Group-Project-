@@ -1,4 +1,3 @@
-
 import java.util.Arrays;
 
 
@@ -13,9 +12,11 @@ public class seatSelection {
 
     // construct a new seat matrix
     // and fills matrix with zeros
-    seatSelection(){
+    seatSelection()
+    {
         int i;
-        for (i = 0; i < row; i++){
+        for (i = 0; i < row; i++)
+        {
             Arrays.fill(seatsMatrix[i],0);
         }
     }
@@ -28,7 +29,8 @@ public class seatSelection {
     // and integer can be between 1 - 6
     // return 0 if seat can be taken
     // returns -1 if seat can't beat taken
-    public int takeSeat(String seatID){
+    public int takeSeat(String seatID)
+    {
 
         int rowID;
         int colID;
@@ -36,7 +38,8 @@ public class seatSelection {
         char[] SeatIdArr = new char[seatIDLen]; 
 
         // invalid len for seatID will return nothing
-        if (seatIDLen > 2 || seatIDLen < 0){
+        if (seatIDLen > 2 || seatIDLen < 0)
+        {
             return -1;
         }
 
@@ -45,9 +48,10 @@ public class seatSelection {
         // if seatID is not in the format of [(letter,Integer)]
         // return -1
         if (Character.isLetter(SeatIdArr[0]) == false ||
-            Character.isDigit(SeatIdArr[1]) == false){
-            return -1;
-        }
+            Character.isDigit(SeatIdArr[1]) == false)
+            {
+                return -1;
+            }
         
         // change input format to usable numbers for array
         rowID = Character.toLowerCase(SeatIdArr[0]) - 'a';
@@ -59,21 +63,28 @@ public class seatSelection {
         }
 
         // checks if seat is already taken
-        if (seatsMatrix[rowID][colID] == 1){
+        if (seatsMatrix[rowID][colID] == 1)
+        {
             return -1;
-        }else{
+        }
+        else
+        {
             seatsMatrix[rowID][colID] = 1;
         }
         return 0;
     }
 
-    public void printSeats(){
-        int i,j;
+    public void printSeats()
+    {
+        int i, j;
 
-        for (i = 0; i < row; i++){
-            for (j = 0; j < col; j++){
+        for (i = 0; i < row; i++)
+        {
+            for (j = 0; j < col; j++)
+            {
                 System.out.print(seatsMatrix[i][j]);
             }
+
             System.out.println();
         }
     }

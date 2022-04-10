@@ -1,6 +1,4 @@
 
-import java.text.NumberFormat;
-
 import javax.swing.UIManager;
 
 public class MovieSimUI extends javax.swing.JFrame {
@@ -8,23 +6,15 @@ public class MovieSimUI extends javax.swing.JFrame {
     /**
      * Creates new form MovieSimUI
      */
-
-    //Global Variables
-    seatSelectionMenu ssm;
-    int movieIndex;
-    double seatCost;
-
     public MovieSimUI() {
         initComponents();
-        
     }
 
     
     public void initComponents() {
 
 
-        // Ui manager get the look and feel  of users
-        // system and replicates that look for the gui
+        // makes it look more modern
         try {
             UIManager.setLookAndFeel(
             UIManager.getSystemLookAndFeelClassName());
@@ -49,45 +39,24 @@ public class MovieSimUI extends javax.swing.JFrame {
         largeDrink = new javax.swing.JRadioButton();
         drinkPic = new javax.swing.JLabel();
         popPic1 = new javax.swing.JLabel();
-        
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Movie Theater Simulator");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setSize(new java.awt.Dimension(450, 500));
-        setResizable(false);
 
         // creating a movieSelection object
         // that holds the current movies
         // populates movie selection combo box with preMade movies
         movieSelection movSel = new movieSelection();
-        
-        
-
         movieSelection.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         movieSelection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] 
         {movSel.getMovieSelection(0).getName(),movSel.getMovieSelection(1).getName(),
         movSel.getMovieSelection(2).getName(),movSel.getMovieSelection(3).getName(),}));
         movieSelection.setToolTipText("");
-
         movieSelection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
-                
-                
-                // creates a new seatMenu
-                ssm = new seatSelectionMenu();
-
-                // gets the movies index in respect to the combo Box 
-                movieIndex = movieSelection.getSelectedIndex();
-
-                // get the price of said movie
-                seatCost = movSel.getMovieSelection(movieIndex).getTicketPrice();
-
-                // formats the double to look like currency
-                NumberFormat formatter = NumberFormat.getCurrencyInstance();
-                // displays correct price per seat in the seat selection menu
-                ssm.perSeatCost.setText(formatter.format(seatCost));
                 // work on getting correct movie from this box
             }
         });
@@ -129,9 +98,9 @@ public class MovieSimUI extends javax.swing.JFrame {
         drinkSizes.add(largeDrink);
         largeDrink.setText("Large");
 
-        drinkPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("drinkPic.jpg")));
+        drinkPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("drinkPic.jpg"))); // NOI18N
 
-        popPic1.setIcon(new javax.swing.ImageIcon(getClass().getResource("popPic.png")));
+        popPic1.setIcon(new javax.swing.ImageIcon(getClass().getResource("popPic.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,21 +180,12 @@ public class MovieSimUI extends javax.swing.JFrame {
         );
 
         pack();
-    }
+    }// </editor-fold>//GEN-END:initComponents
 
     private void seatSelectionButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        // if a movie has not been selected yet
-        // this method will just return
-        try {
-            ssm.setVisible(true);   
-        } catch (Exception e) {
-            //TODO: handle exception
-            return;
-        }
-
-
-        
+        seatSelectionMenu ssm = new seatSelectionMenu();
+        ssm.setVisible(true);   
     }
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {

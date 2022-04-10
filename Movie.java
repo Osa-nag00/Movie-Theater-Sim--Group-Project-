@@ -1,10 +1,12 @@
-public class Movie{
+public class Movie
+{
 
     private String name;
     private double ticketPrice;
     private seatSelection seats;
 
-    Movie(String name, double ticketPrice){
+    Movie(String name, double ticketPrice)
+    {
 
         this.name = name;
         this.ticketPrice = ticketPrice;
@@ -12,19 +14,23 @@ public class Movie{
     }
 
 
-    public String getName() {
+    public String getName() 
+    {
         return this.name;
     }
 
-    public double getTicketPrice() {
+    public double getTicketPrice() 
+    {
         return this.ticketPrice;
     }
 
-    public seatSelection getSeats() {
+    public seatSelection getSeats() 
+    {
         return seats;
     }
 
-    public void takeSeat(String seatID) {
+    public void takeSeat(String seatID) 
+    {
         this.seats.takeSeat(seatID);
     }
 
