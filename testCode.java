@@ -1,4 +1,7 @@
+
 import java.util.Scanner;
+
+
 
 public class testCode 
 {
@@ -32,6 +35,7 @@ public class testCode
 
         newUser = new MovieAccount(balance, name, email);
 
+        inp.close();
         return newUser;
     }
 
