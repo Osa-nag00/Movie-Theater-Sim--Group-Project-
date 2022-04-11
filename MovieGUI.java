@@ -171,23 +171,10 @@ public class MovieGUI extends javax.swing.JFrame {
         completePurchase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
-
-
-                // TODO: debugging
-                // code for displaying seats taken
-
-                // -----------------------------------------------------------------------
-                // ArrayList<String> fun = currentMovie.getSeats().getArrayListOfSeats();
-                // int numSeats = currentMovie.getSeats().getNumSeatsTaken();
-                // for (int i = 0; i < numSeats; i++)
-                // {
-                //     System.out.println(fun.get(i));
-
-                // }
-                // -----------------------------------------------------------------------
-
-
-            
+                // sending seats and current movie to completion dialog box
+                ArrayList<String> seats = currentMovie.getSeats().getArrayListOfSeats();
+                completionForm cf = new completionForm(currentMovie,seats);
+                cf.setVisible(true);
             }
         });
 

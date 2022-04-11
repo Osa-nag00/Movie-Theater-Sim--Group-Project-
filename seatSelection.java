@@ -158,6 +158,13 @@ public class seatSelection
         return this.seatsTaken;
     }
 
+    public String seatsToString(ArrayList<String> seats)
+    {
+        String seatsString;
+        seatsString = String.join(",", seats);
+        return seatsString;
+    }
+
    
 }
 
