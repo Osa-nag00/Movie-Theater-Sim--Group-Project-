@@ -29,6 +29,7 @@ public class movieSelection {
         return (m == null) ?  "" :  m.getName();
     }
 
+    // get a String representation of the price per seat
     public String getSeatPriceString(int movieIndex)
     {   
         // object that helps with formatting numbers

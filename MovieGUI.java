@@ -1,4 +1,5 @@
 import java.text.NumberFormat;
+import java.util.ArrayList;
 
 import javax.swing.JToggleButton;
 import javax.swing.UIManager;
@@ -36,6 +37,11 @@ public class MovieGUI extends javax.swing.JFrame {
        
         
         ms = new movieSelection();
+        // initializes current movie with the first movie in the 
+        // movie selections object
+        currentMovie = ms.getMovie(0);
+
+
         popCornSizes = new javax.swing.ButtonGroup();
         drinkSizes = new javax.swing.ButtonGroup();
         movieSelectionComboBox = new javax.swing.JComboBox<>();
@@ -88,6 +94,9 @@ public class MovieGUI extends javax.swing.JFrame {
         F5 = new javax.swing.JToggleButton();
         F6 = new javax.swing.JToggleButton();
 
+        
+        
+
         JToggleButton[] toggleButtons = {A1,A2,A3,A4,A5,A6,
                                          B1,B2,B3,B4,B5,B6,
                                          C1,C2,C3,C4,C5,C6,
@@ -98,7 +107,6 @@ public class MovieGUI extends javax.swing.JFrame {
         
                                        
 
-        
         fakeScreen = new javax.swing.JLabel();
         movieScreenText = new javax.swing.JLabel();
         drinkPic = new javax.swing.JLabel();
@@ -147,6 +155,8 @@ public class MovieGUI extends javax.swing.JFrame {
             }
         });
 
+        
+
         movieSelectionText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         movieSelectionText.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         movieSelectionText.setText("Movie Selection");
@@ -158,6 +168,28 @@ public class MovieGUI extends javax.swing.JFrame {
         totalCostIntText.setText("$0.00");
 
         completePurchase.setText("Complete Purchase");
+        completePurchase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+
+
+                // TODO: debugging
+                // code for displaying seats taken
+
+                // -----------------------------------------------------------------------
+                // ArrayList<String> fun = currentMovie.getSeats().getArrayListOfSeats();
+                // int numSeats = currentMovie.getSeats().getNumSeatsTaken();
+                // for (int i = 0; i < numSeats; i++)
+                // {
+                //     System.out.println(fun.get(i));
+
+                // }
+                // -----------------------------------------------------------------------
+
+
+            
+            }
+        });
 
         popCornSizes.add(noPop);
         noPop.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -278,7 +310,7 @@ public class MovieGUI extends javax.swing.JFrame {
         
 
         perSeatCost.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        perSeatCost.setText("$0.00");
+        perSeatCost.setText(ms.getSeatPriceString(0));
 
         textLabelForSeatCost.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         textLabelForSeatCost.setText("Per Seat Cost:");

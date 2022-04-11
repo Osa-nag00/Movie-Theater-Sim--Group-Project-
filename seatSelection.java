@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -7,10 +8,12 @@ import java.util.Arrays;
 public class seatSelection 
 {
 
+    private int totalNumSeats = 36;
     private final int row = 6;
     private  final int col = 6;
     private int numSeatsTaken = 0;
     private int[][] seatsMatrix = new int[row][col];
+    public ArrayList<String> seatsTaken = new ArrayList<String>(totalNumSeats);
 
     // constructs a new seat matrix
     // and fills matrix with zeros
@@ -36,11 +39,17 @@ public class seatSelection
         int colID;
         char[] seatIdArr = new char[2];
 
+       
+
         try {
             seatIdArr = toggleButton.getText().toCharArray();
         } catch (Exception e) {
             return;
         }
+
+        // stores seats in array list for later output
+        seatsTaken.add(toggleButton.getText());
+
         // change input format to usable numbers for array
         rowID = Character.toLowerCase(seatIdArr[0]) - 'a';
         colID = Character.getNumericValue(seatIdArr[1]) - 1;
@@ -67,6 +76,7 @@ public class seatSelection
     public void removeSeat(javax.swing.JToggleButton toggleButton)
     {
 
+        int deleteSeatIndex;
         int rowID;
         int colID;
         char[] seatIdArr = new char[2];
@@ -76,6 +86,15 @@ public class seatSelection
         } catch (Exception e) {
             return;
         }
+
+        // finds and deletes seat at specific index
+        deleteSeatIndex = seatsTaken.indexOf(toggleButton.getText());
+        if (deleteSeatIndex != -1)
+        {
+            seatsTaken.remove(deleteSeatIndex);
+        }
+
+
         // change input format to usable numbers for array
         rowID = Character.toLowerCase(seatIdArr[0]) - 'a';
         colID = Character.getNumericValue(seatIdArr[1]) - 1;
@@ -134,6 +153,12 @@ public class seatSelection
         return this.numSeatsTaken;
     }
 
+    public ArrayList<String> getArrayListOfSeats()
+    {
+        return this.seatsTaken;
+    }
+
+   
 }
 
 
