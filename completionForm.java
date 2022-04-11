@@ -30,6 +30,7 @@ public class completionForm extends javax.swing.JFrame {
 
     
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         tickerNumberText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         tickerNumberText.setText("Tickect Number:");
