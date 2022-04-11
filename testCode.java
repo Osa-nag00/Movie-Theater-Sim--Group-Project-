@@ -5,7 +5,7 @@ public class testCode
     public static void main(String[] args) 
     {
         
-        MovieSimUI gui = new MovieSimUI();
+        MovieGUI gui = new MovieGUI();
         gui.setVisible(true);
         signUp();
 
