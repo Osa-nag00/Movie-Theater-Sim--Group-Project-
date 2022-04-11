@@ -36,7 +36,7 @@ public class completionForm extends javax.swing.JFrame {
         tickerNumberText.setText("Tickect Number:");
 
         seatNumbersText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        seatNumbersText.setText("Seat Numbers:");
+        seatNumbersText.setText("Seat Number(s):");
 
         movieNameText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         movieNameText.setText("Movie Name:");
