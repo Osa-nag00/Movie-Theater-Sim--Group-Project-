@@ -1,14 +1,11 @@
-
 import java.util.Scanner;
-
-
 
 public class testCode 
 {
     public static void main(String[] args) 
     {
         
-        MovieGUI gui = new MovieGUI();
+        MovieSimUI gui = new MovieSimUI();
         gui.setVisible(true);
         signUp();
 
@@ -20,7 +17,6 @@ public class testCode
         MovieAccount newUser;
         double balance;
         String name;
-        String email;
 
         System.out.println("Please create an account.");
 
@@ -30,12 +26,12 @@ public class testCode
         System.out.print("Enter your balance: ");
         balance = inp.nextDouble();
 
-        System.out.print("Enter your email: ");
-        email = inp.nextLine();
+        newUser = new MovieAccount(balance, name);
+        newUser.setId();
+        newUser.setBalance(balance);
+        newUser.setName(name);
+        newUser.toString();
 
-        newUser = new MovieAccount(balance, name, email);
-
-        inp.close();
         return newUser;
     }
 

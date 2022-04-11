@@ -4,15 +4,13 @@ import java.util.Arrays;
 // class that stores current seat for
 // any given movie in a matrix of 36 slots
 
-public class seatSelection 
-{
+public class seatSelection {
 
     private final int row = 6;
     private  final int col = 6;
-    private int numSeatsTaken = 0;
     private int[][] seatsMatrix = new int[row][col];
 
-    // constructs a new seat matrix
+    // construct a new seat matrix
     // and fills matrix with zeros
     seatSelection()
     {
@@ -24,99 +22,44 @@ public class seatSelection
     }
 
 
-    // both take and remove seat functions return 1 if they can successfully
-    // take and open seat or remove a used seat respectively
-    // return -1 if that task can't be completed
-    // -2 if exception was caught
-
-    public void takeSeat(javax.swing.JToggleButton toggleButton)
+    // seat id is the location of where the seat is
+    // within a 2d matrix of 36 seats
+    // param will be taken in as a string in the form of [(letter,Integer)]
+    // where letter can be in the range of A - F
+    // and integer can be between 1 - 6
+    // return 0 if seat can be taken
+    // returns -1 if seat can't beat taken
+    public int takeSeat(String seatID)
     {
 
         int rowID;
         int colID;
-        char[] seatIdArr = new char[2];
+        int seatIDLen =  seatID.length();
+        char[] SeatIdArr = new char[seatIDLen]; 
 
-        try {
-            seatIdArr = toggleButton.getText().toCharArray();
-        } catch (Exception e) {
-            return;
+        // invalid len for seatID will return nothing
+        if (seatIDLen > 2 || seatIDLen < 0)
+        {
+            return -1;
         }
-        // change input format to usable numbers for array
-        rowID = Character.toLowerCase(seatIdArr[0]) - 'a';
-        colID = Character.getNumericValue(seatIdArr[1]) - 1;
 
-        // if seat out of bounds, return
+        SeatIdArr = seatID.toCharArray();
+
+        // if seatID is not in the format of [(letter,Integer)]
+        // return -1
+        if (Character.isLetter(SeatIdArr[0]) == false ||
+            Character.isDigit(SeatIdArr[1]) == false)
+            {
+                return -1;
+            }
+        
+        // change input format to usable numbers for array
+        rowID = Character.toLowerCase(SeatIdArr[0]) - 'a';
+        colID = Character.getNumericValue(SeatIdArr[1]) - 1;
+
         if ((rowID > row || rowID < 0) || (colID > row || colID < 0))
         {
-            return;
-        }
-
-        // checks if seat is already taken
-        if (seatsMatrix[rowID][colID] == 1)
-        {
-            return;
-        }
-        else
-        {
-            numSeatsTaken +=1;
-            seatsMatrix[rowID][colID] = 1;
-            return;
-        }
-    }
-
-    public void removeSeat(javax.swing.JToggleButton toggleButton)
-    {
-
-        int rowID;
-        int colID;
-        char[] seatIdArr = new char[2];
-
-        try {
-            seatIdArr = toggleButton.getText().toCharArray();
-        } catch (Exception e) {
-            return;
-        }
-        // change input format to usable numbers for array
-        rowID = Character.toLowerCase(seatIdArr[0]) - 'a';
-        colID = Character.getNumericValue(seatIdArr[1]) - 1;
-
-        // if seat out of bounds, return
-        if ((rowID > row || rowID < 0) || (colID > row || colID < 0))
-        {
-            return;
-        }
-
-        // checks if seat is already taken
-        if (seatsMatrix[rowID][colID] == 1)
-        {
-            numSeatsTaken -=1;
-            seatsMatrix[rowID][colID] = 0;
-            return;
-        }
-        return;
-    }
-
-    public int seatTaken(javax.swing.JToggleButton toggleButton)
-    {
-
-        int rowID;
-        int colID;
-        char[] seatIdArr = new char[2];
-
-        try {
-            seatIdArr = toggleButton.getText().toCharArray();
-        } catch (Exception e) {
-            return -2;
-        }
-
-        // change input format to usable numbers for array
-        rowID = Character.toLowerCase(seatIdArr[0]) - 'a';
-        colID = Character.getNumericValue(seatIdArr[1]) - 1;
-
-        // if seat out of bounds, return
-        if ((rowID > row || rowID < 0) || (colID > row || colID < 0))
-        {
-            return -2;
+            return -1;
         }
 
         // checks if seat is already taken
@@ -124,14 +67,26 @@ public class seatSelection
         {
             return -1;
         }
-
-        return 1;
-          
+        else
+        {
+            seatsMatrix[rowID][colID] = 1;
+        }
+        return 0;
     }
 
-    public int getNumSeatsTaken()
+    public void printSeats()
     {
-        return this.numSeatsTaken;
+        int i, j;
+
+        for (i = 0; i < row; i++)
+        {
+            for (j = 0; j < col; j++)
+            {
+                System.out.print(seatsMatrix[i][j]);
+            }
+
+            System.out.println();
+        }
     }
 
 }

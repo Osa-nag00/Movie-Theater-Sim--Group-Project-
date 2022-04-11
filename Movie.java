@@ -29,19 +29,9 @@ public class Movie
         return seats;
     }
 
-    public void takeSeat(javax.swing.JToggleButton toggleButton) 
+    public void takeSeat(String seatID) 
     {
-        this.seats.takeSeat(toggleButton);
-    }
-
-    public void removeSeat(javax.swing.JToggleButton toggleButton) 
-    {
-        this.seats.removeSeat(toggleButton);
-    }
-
-    public int seatTaken(javax.swing.JToggleButton toggleButton)
-    {
-        return this.seats.seatTaken(toggleButton);
+        this.seats.takeSeat(seatID);
     }
 
 }

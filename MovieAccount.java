@@ -1,20 +1,13 @@
-// import com.jscape.inet.smtp.*;
-// import com.jscape.inet.email.*;
-// import com.jscape.inet.mime.MimeException;
-// import java.io.*;
-
 class MovieAccount
 {
     private int id; // Ticket number
     private double balance; 
     private String name; 
-    private String email;
     
-    public MovieAccount(double balance, String name, String email)
+    public MovieAccount(double balance, String name)
     {
         this.balance = balance;
         this.name = name;
-        this.email = email;
     }
     
     public void setId() // Might fix later 
@@ -46,16 +39,7 @@ class MovieAccount
     {
         return name;
     }
-    
-    public void setEmail(String newEmail)
-    {
-        email = newEmail;
-    }
-    
-    public String getEmail()
-    {
-        return email;
-    }
+
     
     public void deposit(double depositAmount)
     {
@@ -69,11 +53,24 @@ class MovieAccount
     
     public String toString()
     {
-        return "Ticket number: " + id + "\n" + "Account balance: " + balance + "\n" + "Account name: " + name + "\n" + "Account email: " + email + "\n";
+        System.out.println("Ticket number: " + id + "\n" + "Account balance: " + balance + "\n" + "Account name: " + name);
+        return "Ticket number: " + id + "\n" + "Account balance: " + balance + "\n" + "Account name: " + name + "\n";
     }
 
-    public void sendEmail(String userEmail)
-    {
+    // public void sendEmail()
+    // {
+    //     Scanner inp = new Scanner(System.in);
+    //     Properties props = new Properties();
 
-    }
+    //     props.put("mail.smtp.auth", "true");
+    //     props.put("mail.smtp.starttls.enable", "true");
+    //     props.put("mail.smtp.host", "smtp.gmail.com");
+    //     props.put("mail.smtp.port", "587");
+
+    //     String myEmail = getEmail();
+    //     String password = inp.nextLine();
+
+    //     Session session = Session.getInstance
+    // }
+
 }
