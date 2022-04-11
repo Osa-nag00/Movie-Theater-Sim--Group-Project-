@@ -125,6 +125,10 @@ public class MovieGUI extends javax.swing.JFrame {
         (new String[] { ms.getMovieName(0), ms.getMovieName(1),
                         ms.getMovieName(2), ms.getMovieName(3)}));
 
+                        
+        noPop.setSelected(true);
+        noDrink.setSelected(true);
+
         movieSelectionComboBox.setToolTipText("");
         movieSelectionComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
